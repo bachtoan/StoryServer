@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-         
-        Schema::table('touchable', function (Blueprint $table) {
-            $table->integer('votes');
-        }); 
+        Schema::create('sound', function (Blueprint $table) {
+            $table->unsignedBigInteger("id")->primary();
+            $table->string('soundUrl');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('sound');
     }
 };

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::table('touchable', function (Blueprint $table) {
-            $table->dropColumn('votes');
-            $table->string('data');
+        Schema::table('page', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_lession')->nullable();
+ 
+            $table->foreign('id_lession')->references('id')->on('story');
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::disableForeignKeyConstraints();
     }
 };

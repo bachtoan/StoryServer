@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('page_touchable', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger("id")->primary();
             $table->string('positionX');
             $table->string('positionY');
             $table->timestamps();
@@ -25,5 +25,6 @@ return new class extends Migration
     public function down(): void
     {
         //
+        Schema::dropIfExists("page_touchable");
     }
 };

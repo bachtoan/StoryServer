@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('page', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger("id")->primary();
             $table->integer('page_number');
             $table->string('sound')->nullable();
             $table->string('background');
