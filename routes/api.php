@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,13 @@ use App\Http\Controllers\HomeController;
 //     return $request->user();
 // });
 
-Route::get('/user',[HomeController::class, "user"]);
+// Route::get('/user',[HomeController::class, "user"]);
 
 
-Route::post('/addUser',[HomeController::class, "addUser"]);
+// Route::post('/addUser',[HomeController::class, "addUser"]);
 
-Route::post('/updateUser',[HomeController::class, "updateUser"]);
+// Route::post('/updateUser',[HomeController::class, "updateUser"]);
 
-Route::delete('/deleteUser/{id}',[HomeController::class, "deleteUser"]);
+// Route::delete('/deleteUser/{id}',[HomeController::class, "deleteUser"]);
 
+Route::get('/story',[StoryController::class, "getStory"]);

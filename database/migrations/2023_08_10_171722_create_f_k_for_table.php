@@ -15,6 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_page')->nullable();
             $table->unsignedBigInteger('id_content')->nullable();
             $table->unsignedBigInteger('id_touchable')->nullable();
+            
 
             $table->foreign('id_page')->references('id')->on('page');
             $table->foreign('id_content')->references('id')->on('content');

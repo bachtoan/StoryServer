@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::table('page', function (Blueprint $table) {
             $table->unsignedBigInteger('id_lession')->nullable();
  
+            
             $table->foreign('id_lession')->references('id')->on('story');
         });
     }

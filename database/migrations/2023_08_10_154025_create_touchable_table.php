@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('touchable', function (Blueprint $table) {
-            $table->unsignedBigInteger("id")->primary();
+            $table->unsignedBigInteger("id")->autoIncrement();
             $table->string('data');
             $table->timestamps();
         });
