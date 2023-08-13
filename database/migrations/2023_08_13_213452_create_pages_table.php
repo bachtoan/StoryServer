@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('content', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->unsignedBigInteger("id")->autoIncrement();
-            $table->string('content');
+            $table->unsignedBigInteger('id_story')->nullable();
+            $table->foreign('id_story')->references('id')->on('stories');
+            $table->integer('page_number');
+            $table->string('sound')->nullable();
+            $table->string('background');
             $table->timestamps();
         });
     }
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('content');
+        Schema::dropIfExists('pages');
     }
 };

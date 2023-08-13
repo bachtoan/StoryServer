@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sound', function (Blueprint $table) {
+        Schema::create('contents', function (Blueprint $table) {
             $table->unsignedBigInteger("id")->autoIncrement();
-            $table->string('soundUrl');
+            $table->unsignedBigInteger('id_sound')->nullable();
+            $table->foreign('id_sound')->references('id')->on('sounds');
+            $table->string('content');
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sound');
+        Schema::dropIfExists('contents');
     }
 };

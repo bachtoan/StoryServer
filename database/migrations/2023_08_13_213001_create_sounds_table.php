@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('page_touchable', function (Blueprint $table) {
+        Schema::create('sounds', function (Blueprint $table) {
             $table->unsignedBigInteger("id")->autoIncrement();
-            $table->string('positionX');
-            $table->string('positionY');
+            $table->string('soundUrl');
             $table->timestamps();
         });
     }
@@ -24,7 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
-        Schema::dropIfExists("page_touchable");
+        Schema::dropIfExists('sounds');
     }
 };

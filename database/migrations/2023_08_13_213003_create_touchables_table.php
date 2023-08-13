@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('page', function (Blueprint $table) {
+        Schema::create('touchables', function (Blueprint $table) {
             $table->unsignedBigInteger("id")->autoIncrement();
-            $table->integer('page_number');
-            $table->string('sound')->nullable();
-            $table->string('background');
+            $table->unsignedBigInteger('id_sound')->nullable();
+            $table->foreign('id_sound')->references('id')->on('sounds');
+
+            $table->string('data');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('page');
+        Schema::dropIfExists('touchables');
     }
 };

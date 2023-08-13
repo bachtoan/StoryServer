@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('page_content', function (Blueprint $table) {
+        Schema::create('stories', function (Blueprint $table) {
             $table->unsignedBigInteger("id")->autoIncrement();
-            $table->string('positionX');
-            $table->string('positionY');
+            $table->string('name');
+            $table->string('author');
+            $table->string('illustration');
+            $table->integer('page_quantity');
             $table->timestamps();
         });
     }
@@ -24,7 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
-        Schema::dropIfExists('page_content');
+        Schema::dropIfExists('stories');
     }
 };
