@@ -15,18 +15,63 @@ class StoryController extends Controller
     }
 
     public function getStory(){
-        $storyList = $this->story->queryBuilder();
-        return response()->json(['users' => $storyList]);
+        $storyList = Story::all();
+        return response()->json(['story' => $storyList]);
+
     }
     public function addStory(Request $request){
-    
-        $this->story->addStory($request);
-        return response()->json(['Success' => "Added story " ]);
+        $name = $request->input('name');
+        $author = $request->input('author');
+        $illustration = $request->input('illustration');
+        $page_quantity = $request->input('page_quantity');
+
+        $newStory = new Story();
+        $newStory->name = $name;
+        $newStory->author = $author;
+        $newStory->illustration = $illustration;
+        $newStory->page_quantity = $page_quantity;
+        $newStory->save();
+
+    return response()->json(['message' => 'Story added successfully']);
+        
     }
 
     public function updateStory(Request $request){
-
-        $this->story->updateStory($request);
-        return response()->json(['Success' => "Updated story " ]);
+        $id = $request->input('id');
+        $name = $request->input('name');
+        $author = $request->input('author');
+        $illustration = $request->input('illustration');
+        $page_quantity = $request->input('page_quantity');
+    
+        $story = Story::find($id);
+    
+        if (!$story) {
+            return response()->json(['message' => 'Story not found'], 404);
+        }
+    
+        $story->name = $name;
+        $story->author = $author;
+        $story->illustration = $illustration;
+        $story->page_quantity = $page_quantity;
+        $story->save();
+    
+        return response()->json(['message' => 'Story updated successfully']);
+       
     }
+
+    public function deleteStory(Request $request){
+        $id = $request->input('id');
+
+        $story = Story::find($id);
+    
+        if (!$story) {
+            return response()->json(['message' => 'Story not found'], 404);
+        }
+    
+        $story->delete();
+    
+        return response()->json(['message' => 'Story deleted successfully']);
+    }
+
+
 }

@@ -25,10 +25,14 @@ use App\Http\Controllers\StoryController;
 // Route::post('/updateUser',[HomeController::class, "updateUser"]);
 // Route::delete('/deleteUser/{id}',[HomeController::class, "deleteUser"]);
 
-Route::get('/story',[StoryController::class, "getStory"]);
+//=======================STORY============================
 
-Route::get('/story/{id}',[StoryController::class, "getStory"]);
+Route::get('/story',[StoryController::class, "getStory"]);
 
 Route::post('/addstory',[StoryController::class, "addStory"]);
 
 Route::post('/updatestory',[StoryController::class, "updateStory"]);
+
+Route::post('/deletestory',[StoryController::class, "deleteStory"]);
+
+//=======================PAGE=============================
