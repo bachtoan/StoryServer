@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StoryController;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,13 @@ Route::post('/updatestory',[StoryController::class, "updateStory"]);
 Route::post('/deletestory',[StoryController::class, "deleteStory"]);
 
 //=======================PAGE=============================
+
+Route::get('/getallpage',[PageController::class, "getAllPage"]);
+
+Route::post('/getstorypage',[PageController::class, "getStoryPage"]);
+
+Route::post('/addpage',[PageController::class, "addPage"]);
+
+Route::post('/updatepage',[PageController::class, "updatePage"]);
+
+Route::post('/deletepage',[PageController::class, "deletePage"]);
