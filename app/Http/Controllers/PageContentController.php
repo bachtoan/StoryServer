@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class PageContentController extends Controller
 {
     public function getPageContents(Request $request){
-        $id_story = $request->input('id_page');
+        $id_page = $request->input('id_page');
 
-        $pageContent = PageContent::where('id_page', $id_story)->get();
+        $pageContent = PageContent::where('id_page', $id_page)->get();
 
         return response()->json(['pageContent' => $pageContent]);
 

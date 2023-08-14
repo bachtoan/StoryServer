@@ -8,6 +8,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\SoundController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\PageContentController;
+use App\Http\Controllers\PageTouchableController;
 use App\Http\Controllers\TouchableController;
 
 /*
@@ -92,8 +93,15 @@ Route::post('/updatepagecontent',[PageContentController::class, "updatePageConte
 
 Route::post('/deletepagecontent',[PageContentController::class, "deletePageContent"]);
 
+//=======================PageTouchable====================================================
 
+Route::post('/getpagetouchables',[PageTouchableController::class, "getPageTouchables"]);
 
+Route::post('/addpagetouchable',[PageTouchableController::class, "addPageTouchable"]);
+
+Route::post('/updatepagetouchable',[PageTouchableController::class, "updatePageTouchable"]);
+
+Route::post('/deletepagetouchable',[PageTouchableController::class, "deletePageTouchable"]);
 
 
 
