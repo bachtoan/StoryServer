@@ -7,6 +7,7 @@ use App\Http\Controllers\StoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SoundController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\PageContentController;
 use App\Http\Controllers\TouchableController;
 
 /*
@@ -80,6 +81,21 @@ Route::post('/addtouchable',[TouchableController::class, "addTouchable"]);
 Route::post('/updatetouchable',[TouchableController::class, "updateTouchable"]);
 
 Route::post('/deletetouchable',[TouchableController::class, "deleteTouchable"]);
+
+//=======================PageContent======================================================
+
+Route::post('/getpagecontent',[PageContentController::class, "getPageContents"]);
+
+Route::post('/addpagecontent',[PageContentController::class, "addPageContent"]);
+
+Route::post('/updatepagecontent',[PageContentController::class, "updatePageContent"]);
+
+Route::post('/deletepagecontent',[PageContentController::class, "deletePageContent"]);
+
+
+
+
+
 
 
 
