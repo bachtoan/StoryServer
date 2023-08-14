@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SoundController;
+use App\Http\Controllers\ContentController;
+
 
 
 /*
@@ -50,12 +52,24 @@ Route::post('/updatepage',[PageController::class, "updatePage"]);
 
 Route::post('/deletepage',[PageController::class, "deletePage"]);
 
-//=======================Content============================================================
+//=======================Sound============================================================
 
-Route::get('/getsound',[SoundController::class, "getSounds"]);
+Route::get('/getsounds',[SoundController::class, "getSounds"]);
 
 Route::post('/addsound',[SoundController::class, "addSound"]);
 
 Route::post('/updatesound',[SoundController::class, "updateSound"]);
 
 Route::post('/deletesound',[SoundController::class, "deleteSound"]);
+
+//=======================Content==========================================================
+
+Route::get('/getcontents',[ContentController::class, "getContents"]);
+
+Route::post('/addcontent',[ContentController::class, "addContent"]);
+
+Route::post('/updatecontent',[ContentController::class, "updateContent"]);
+
+Route::post('/deletecontent',[ContentController::class, "deleteContent"]);
+
+
