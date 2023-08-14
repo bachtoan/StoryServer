@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SoundController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,7 @@ use App\Http\Controllers\PageController;
 // Route::post('/updateUser',[HomeController::class, "updateUser"]);
 // Route::delete('/deleteUser/{id}',[HomeController::class, "deleteUser"]);
 
-//=======================STORY============================
+//=======================STORY===============================================================
 
 Route::get('/story',[StoryController::class, "getStory"]);
 
@@ -36,7 +38,7 @@ Route::post('/updatestory',[StoryController::class, "updateStory"]);
 
 Route::post('/deletestory',[StoryController::class, "deleteStory"]);
 
-//=======================PAGE=============================
+//=======================PAGE================================================================
 
 Route::get('/getallpage',[PageController::class, "getAllPage"]);
 
@@ -47,3 +49,13 @@ Route::post('/addpage',[PageController::class, "addPage"]);
 Route::post('/updatepage',[PageController::class, "updatePage"]);
 
 Route::post('/deletepage',[PageController::class, "deletePage"]);
+
+//=======================Content============================================================
+
+Route::get('/getsound',[SoundController::class, "getSounds"]);
+
+Route::post('/addsound',[SoundController::class, "addSound"]);
+
+Route::post('/updatesound',[SoundController::class, "updateSound"]);
+
+Route::post('/deletesound',[SoundController::class, "deleteSound"]);
