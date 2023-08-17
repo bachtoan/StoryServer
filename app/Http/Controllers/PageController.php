@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PageRequest;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Repositories\Page\PageRepositoryInterface;
@@ -30,7 +31,7 @@ class PageController extends Controller
 
     }
 
-    public function addPage(Request $request){
+    public function addPage(PageRequest $request){
         if($this->pageRepository->addPage($request)){
             return response()->json(['message' => 'Page added successfully']);
         }
@@ -40,11 +41,11 @@ class PageController extends Controller
     }
     
 
-    public function updatePage(Request $request){
+    public function updatePage(PageRequest $request){
         if($this->pageRepository->updatePage($request)){
             return response()->json(['message' => 'Page updated successfully']);
         }else{
-            return response()->json(['message' => 'Page not found']);
+            return response()->json(['message' => 'Page not found or missing id']); 
         }
     }
 
@@ -54,7 +55,7 @@ class PageController extends Controller
         if($this->pageRepository->deletePage($request)){
             return response()->json(['message' => 'Page deleted successfully']);
         }else{
-            return response()->json(['message' => 'Page not found']);
+            return response()->json(['message' => 'Page not found or missing id']);
         }
     }
 

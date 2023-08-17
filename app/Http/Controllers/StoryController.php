@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoryRequest;
 use Illuminate\Http\Request;
 use App\Models\Story;
 use App\Repositories\Story\StoryRepositoryInterface;
@@ -21,7 +22,7 @@ class StoryController extends Controller
     }
 
 
-    public function addStory(Request $request, StoryRepositoryInterface $storyRepository)
+    public function addStory(StoryRequest $request, StoryRepositoryInterface $storyRepository)
     {
         $name = $request->input('name');
         $author = $request->input('author');
@@ -33,9 +34,14 @@ class StoryController extends Controller
         return response()->json(['message' => 'Story added successfully']);
     }
 
-    public function updateStory(Request $request, StoryRepositoryInterface $storyRepository)
+    public function updateStory(StoryRequest $request, StoryRepositoryInterface $storyRepository)
     {
         $id = $request->input('id');
+        
+        if (!$id) {
+             return response()->json(['error' => 'Missing id'], 400);
+        }
+
         $name = $request->input('name');
         $author = $request->input('author');
         $illustration = $request->input('illustration');
@@ -52,7 +58,10 @@ class StoryController extends Controller
 
     public function deleteStory(Request $request, StoryRepositoryInterface $storyRepository){
         $id = $request->input('id');
-
+        
+        if (!$id) {
+             return response()->json(['error' => 'Missing id'], 400);
+        }
         $deleteStory = $storyRepository->deleteStory($id);
 
         if($deleteStory == null){

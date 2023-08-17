@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContentRequest;
 use App\Models\Content;
 use App\Repositories\Content\ContentRepositoryInterface;
 use Illuminate\Http\Request;
@@ -22,18 +23,18 @@ class ContentController extends Controller
 
     }
 
-    public function addContent(Request $request){
+    public function addContent(ContentRequest $request){
         $this->contentRepository->addContent($request);
 
     return response()->json(['message' => 'Content added successfully']);
         
     }
 
-    public function updateContent(Request $request){
+    public function updateContent(ContentRequest $request){
         if($this->contentRepository->updateContent($request)){
             return response()->json(['message' => 'Content updated successfully']);
         }else{
-            return response()->json(['message' => 'Content not found']);
+            return response()->json(['message' => 'Content not found or missed id']);
         }
        
     }
@@ -42,7 +43,7 @@ class ContentController extends Controller
         if($this->contentRepository->deleteContent($request)){
             return response()->json(['message' => 'Content delete successfully']);
         }else{
-            return response()->json(['message' => 'Content not found']);
+            return response()->json(['message' => 'Content not found or missed id']);
         }
     }
 }

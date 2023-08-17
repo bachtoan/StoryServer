@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SoundRequest;
 use Illuminate\Http\Request;
 use App\Models\Sound;
 use App\Repositories\Sound\SoundRepositoryInterface;
@@ -21,18 +22,18 @@ class SoundController extends Controller
         return response()->json($sounds);
 
     }
-    public function addSound(Request $request){
+    public function addSound(SoundRequest $request){
         $this->soundRepository->addSound($request);
 
-        return response()->json(['message' => 'Story added successfully']);
+        return response()->json(['message' => 'Sound added successfully']);
         
     }
 
-    public function updateSound(Request $request){
+    public function updateSound(SoundRequest $request){
         if($this->soundRepository->updateSound($request)){
             return response()->json(['message' => 'Sound updated successfully']);
         }else{
-            return response()->json(['message' => 'Sound not found']);
+            return response()->json(['message' => 'Sound not found or missed id']);
         }
        
     }
@@ -41,7 +42,7 @@ class SoundController extends Controller
         if($this->soundRepository->deleteSound($request)){
             return response()->json(['message' => 'Sound delete successfully']);
         }else{
-            return response()->json(['message' => 'Sound not found']);
+            return response()->json(['message' => 'Sound not found or missed id']);
         }
     }
 }

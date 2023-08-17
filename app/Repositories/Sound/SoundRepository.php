@@ -32,7 +32,9 @@ class SoundRepository implements SoundRepositoryInterface
         
     
         $sound = Sound::find($id);
-    
+        if (!$id) {
+            return false;
+            }
         if (!$sound) {
             return false;
         }
@@ -49,7 +51,9 @@ class SoundRepository implements SoundRepositoryInterface
         $id = $request->input('id');
 
         $sound = Sound::find($id);
-    
+        if (!$id) {
+            return false;
+            }
         if (!$sound) {
             return false;
         }

@@ -37,12 +37,15 @@ class PageRepository implements PageRepositoryInterface
 
     public function updatePage(Request $request){
         $id = $request->input('id');
+        
         $page_number = $request->input('page_number');
         $sound = $request->input('sound');
         $background = $request->input('background');
 
         $page = Page::find($id);
-
+        if (!$id) {
+            return false;
+            }
         if (!$page) {
             return false;
         }
@@ -58,11 +61,13 @@ class PageRepository implements PageRepositoryInterface
     public function deletePage(Request $request){
         
         $id = $request->input('id');
-    
+        if (!$id) {
+            return false;
+            }
         $page = Page::find($id);
         
         if (!$page) {
-            return response()->json(['message' => 'Page not found'], 404);
+            return false;
         }
         
         $page->delete();

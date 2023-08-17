@@ -31,10 +31,16 @@ class ContentRepository implements ContentRepositoryInterface
 
     public function updateContent(Request $request){
         $id = $request->input('id');
+
+
         $content = $request->input('content');
         
     
         $findcontent = Content::find($id);
+
+        if (!$id) {
+            return false;
+            }
     
         if (!$findcontent) {
             return false;
@@ -52,7 +58,9 @@ class ContentRepository implements ContentRepositoryInterface
         $id = $request->input('id');
 
         $content = Content::find($id);
-    
+        if (!$id) {
+            return false;
+            }
         if (!$content) {
             return false;
         }
