@@ -8,7 +8,7 @@ use App\Repositories\Story\StoryRepositoryInterface;
 
 class StoryController extends Controller
 {
-    protected $storyRepository;
+    protected $storyRepository; 
 
     public function __construct(StoryRepositoryInterface $storyRepository)
     {
