@@ -4,57 +4,44 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sound;
+use App\Repositories\Sound\SoundRepositoryInterface;
 
 class SoundController extends Controller
 {
     //
+
+    protected $soundRepository; 
+
+    public function __construct(SoundRepositoryInterface $soundRepository)
+    {
+        $this->soundRepository = $soundRepository;
+    }
     public function getSounds(){
-        $sounds = Sound::all();
-        return response()->json(['story' => $sounds]);
+        $sounds = $this->soundRepository->getSounds();
+        return response()->json($sounds);
 
     }
     public function addSound(Request $request){
-        $soundUrl = $request->input('soundUrl');
-        
-        $newSound = new Sound();
-        
-        $newSound->soundUrl = $soundUrl;
-        $newSound->save();
+        $this->soundRepository->addSound($request);
 
-    return response()->json(['message' => 'Story added successfully']);
+        return response()->json(['message' => 'Story added successfully']);
         
     }
 
     public function updateSound(Request $request){
-        $id = $request->input('id');
-        $soundUrl = $request->input('soundUrl');
-        
-    
-        $sound = Sound::find($id);
-    
-        if (!$sound) {
-            return response()->json(['message' => 'Sound not found'], 404);
+        if($this->soundRepository->updateSound($request)){
+            return response()->json(['message' => 'Sound updated successfully']);
+        }else{
+            return response()->json(['message' => 'Sound not found']);
         }
-    
-        $sound->soundUrl = $soundUrl;
-       
-        $sound->save();
-    
-        return response()->json(['message' => 'Sound updated successfully']);
        
     }
 
     public function deleteSound(Request $request){
-        $id = $request->input('id');
-
-        $sound = Sound::find($id);
-    
-        if (!$sound) {
-            return response()->json(['message' => 'Sound not found'], 404);
+        if($this->soundRepository->deleteSound($request)){
+            return response()->json(['message' => 'Sound delete successfully']);
+        }else{
+            return response()->json(['message' => 'Sound not found']);
         }
-    
-        $sound->delete();
-    
-        return response()->json(['message' => 'Sound deleted successfully']);
     }
 }

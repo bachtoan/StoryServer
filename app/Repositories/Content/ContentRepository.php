@@ -11,7 +11,7 @@ class ContentRepository implements ContentRepositoryInterface
 {
     public function getContents(){
         $content = Content::all();
-        return response()->json(['content' => $content]);
+        return response()->json($content);
 
     }
 
