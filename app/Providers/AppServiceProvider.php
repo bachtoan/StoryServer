@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Content\ContentRepository;
+use App\Repositories\Content\ContentRepositoryInterface;
 use App\Repositories\Page\PageRepository;
 use App\Repositories\Page\PageRepositoryInterface;
 use App\Repositories\Story\StoryRepository;
@@ -18,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
         //
         $this->app->bind(StoryRepositoryInterface::class, StoryRepository::class);
         $this->app->bind(PageRepositoryInterface::class, PageRepository::class);
+        $this->app->bind(ContentRepositoryInterface::class, ContentRepository::class);
+
 
     }
 
