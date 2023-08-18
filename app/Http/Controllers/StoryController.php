@@ -16,7 +16,7 @@ class StoryController extends Controller
         $this->storyRepository = $storyRepository;
     }
 
-    public function getStory(){
+    public function getAllStory(){
         $storyList = $this->storyRepository->getAllStories();
         return response()->json(['story' => $storyList]);
     }

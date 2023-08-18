@@ -7,6 +7,7 @@ use App\Http\Controllers\StoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SoundController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\DetailStoryController;
 use App\Http\Controllers\PageContentController;
 use App\Http\Controllers\PageTouchableController;
 use App\Http\Controllers\TouchableController;
@@ -33,7 +34,7 @@ use App\Http\Controllers\TouchableController;
 
 //=======================STORY===============================================================
 
-Route::get('/story',[StoryController::class, "getStory"]);
+Route::get('/story',[StoryController::class, "getAllStory"]);
 
 Route::post('/addstory',[StoryController::class, "addStory"]);
 
@@ -103,6 +104,9 @@ Route::post('/updatepagetouchable',[PageTouchableController::class, "updatePageT
 
 Route::post('/deletepagetouchable',[PageTouchableController::class, "deletePageTouchable"]);
 
+//=======================DetailStory======================================================
+
+Route::post('/detailstory',[DetailStoryController::class, "getDetailStory"]);
 
 
 
