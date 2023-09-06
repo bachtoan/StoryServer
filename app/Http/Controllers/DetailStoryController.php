@@ -19,9 +19,10 @@ class DetailStoryController extends Controller
     public function getDetailStory(Request $request){
         $id_story = $request->input('id_story');
 
-        // Page::where('id_story', $id_story)->get();
-        // return $page = Page::with('contents')->get();
-
-        return $page = Page::with('contents.sound')->where('id_story', $id_story)-> get();
+        $story = Story::with(['pages' => function($query) {
+            $query->orderBy('page_number', 'asc'); // Sắp xếp theo trường page_number
+        }, 'pages.contents.sound', 'pages.touchables.sound'])->find($id_story);
+    
+        return response(["data" => $story], 201);
     }
 }

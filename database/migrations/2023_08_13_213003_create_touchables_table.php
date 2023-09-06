@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_sound')->nullable();
             $table->foreign('id_sound')->references('id')->on('sounds');
 
+            
+
             $table->string('data');
             $table->timestamps();
         });
