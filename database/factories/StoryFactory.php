@@ -20,7 +20,7 @@ class StoryFactory extends Factory
             'name' => $this->faker->name,
             'author' => $this->faker->name,
             'illustration' => $this->faker->sentence(),
-            'page_quantity' => $this->faker->numberBetween(1,1000),
+            'page_quantity' => $this->faker->numberBetween(1,100),
         ];
     }
 }

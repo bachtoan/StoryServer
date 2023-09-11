@@ -18,11 +18,11 @@ class PageContentFactory extends Factory
     {
         return [
             'id_page' => rand(1,10),
-            'id_content' => rand(11,35),
+            'id_content' => rand(1,10),
             'id_touchable' => rand(1,10),
             'positionX' => rand(1,10),
             'positionY' => rand(1,10),
-            
+
         ];
     }
 }

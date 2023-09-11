@@ -19,6 +19,6 @@ class Page extends Model
     }
     public function touchables():BelongsToMany
     {
-        return $this->belongsToMany(Touchable::class, 'page_touchables', 'id_page', 'id_touchable')->withPivot('positionX', 'positionY');
+        return $this->belongsToMany(Touchable::class, 'page_touchables', 'id_page', 'id_touchable')->withPivot('positionX', 'positionY','touchWidth', 'touchHeight');
     }
 }

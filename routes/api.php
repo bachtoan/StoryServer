@@ -11,6 +11,8 @@ use App\Http\Controllers\DetailStoryController;
 use App\Http\Controllers\PageContentController;
 use App\Http\Controllers\PageTouchableController;
 use App\Http\Controllers\TouchableController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,14 +25,18 @@ use App\Http\Controllers\TouchableController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+ Route::middleware('auth:sanctum')->group(function (){
+     Route::get('/user',[AuthController::class, "user"]);
+     Route::post('/logout',[AuthController::class, "logout"]);
 
-// Route::get('/user',[HomeController::class, "user"]);
-// Route::post('/addUser',[HomeController::class, "addUser"]);
-// Route::post('/updateUser',[HomeController::class, "updateUser"]);
-// Route::delete('/deleteUser/{id}',[HomeController::class, "deleteUser"]);
+ });
+
+//=======================Auth================================================================
+Route::post('/register',[AuthController::class, "register"]);
+Route::post('/login',[AuthController::class, "login"]);
+
+
+
 
 //=======================STORY===============================================================
 

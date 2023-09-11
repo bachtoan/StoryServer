@@ -20,9 +20,13 @@ class DetailStoryController extends Controller
         $id_story = $request->input('id_story');
 
         $story = Story::with(['pages' => function($query) {
-            $query->orderBy('page_number', 'asc'); // Sắp xếp theo trường page_number
+            $query->orderBy('page_number', 'asc');
         }, 'pages.contents.sound', 'pages.touchables.sound'])->find($id_story);
-    
-        return response(["data" => $story], 201);
+        if(!$story){
+            return response(["Story Not Found"],401);
+        }else{
+            return response(["data" => $story], 201);
+        }
+
     }
 }

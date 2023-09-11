@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // Story::factory(10)->create();
-        // Sound::factory(10)->create();
+        Story::factory(10)->create();
+        Sound::factory(10)->create();
         Content::factory(10)->create();
         Touchable::factory(10)->create();
         Page::factory(10)->create();
