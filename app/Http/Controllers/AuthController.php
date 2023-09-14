@@ -19,13 +19,15 @@ class AuthController extends Controller
             return response()->json(
                 [
                     'message'=> "User not exist!"
-                ]
+                ],
+                404
             );
         }elseif (!Hash::check($request->password, $user->password,[])){
             return response()->json(
                 [
                     'message'=> "Password is incorrect"
-                ]
+                ],
+                403
             );
         }
 
@@ -34,9 +36,10 @@ class AuthController extends Controller
         return response()->json(
             [
                 'access_token' => $token,
-                'type_token' => 'Bearer'
+                'type_token' => 'Bearer',
+                'user' => $user,
             ],
-            200
+            201
         );
 
     }
@@ -52,14 +55,14 @@ class AuthController extends Controller
             'email.required' => 'Email is not null',
             'username.required' => 'Username is not null',
             'password.required' => 'Password is not null',
-            're-password.required' => 're-Password is not null',
+            're_password.required' => 're-Password is not null',
         ];
 
         $validate = Validator::make($request->all(),[
             'email' => 'email|required',
             'username' => 'required',
             'password' => 'required',
-            're-password' => 'required'
+            're_password' => 'required'
         ],$message);
 
         if($validate->fails()){
