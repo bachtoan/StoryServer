@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('sounds', function (Blueprint $table) {
             $table->unsignedBigInteger("id")->autoIncrement();
+            $table->string('soundName')->nullable();
             $table->string('soundUrl');
             $table->timestamps();
         });

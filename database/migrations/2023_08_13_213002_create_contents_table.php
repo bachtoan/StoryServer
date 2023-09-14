@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->unsignedBigInteger("id")->autoIncrement();
+            $table->string('content');
+
             $table->unsignedBigInteger('id_sound')->nullable();
             $table->foreign('id_sound')->references('id')->on('sounds');
-            $table->string('content');
+            $table->string('sync_data')->nullable();
             $table->timestamps();
         });
     }

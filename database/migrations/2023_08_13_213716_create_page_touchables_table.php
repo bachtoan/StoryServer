@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('page_touchables', function (Blueprint $table) {
             $table->unsignedBigInteger("id")->autoIncrement();
-            
+
             $table->unsignedBigInteger('id_page')->nullable();
             $table->unsignedBigInteger('id_touchable')->nullable();
 
             $table->foreign('id_page')->references('id')->on('pages');
             $table->foreign('id_touchable')->references('id')->on('touchables');
-
+            $table->string('touchWidth')->nullable();
+            $table->string('touchHeight')->nullable();
             $table->string('positionX');
             $table->string('positionY');
             $table->timestamps();

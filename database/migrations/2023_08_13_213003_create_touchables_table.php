@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('touchables', function (Blueprint $table) {
             $table->unsignedBigInteger("id")->autoIncrement();
+            $table->string('data');
             $table->unsignedBigInteger('id_sound')->nullable();
             $table->foreign('id_sound')->references('id')->on('sounds');
+            $table->unsignedBigInteger('id_content')->nullable();
+            $table->foreign('id_content')
+                ->references('id')
+                ->on('contents');
 
-            
-
-            $table->string('data');
             $table->timestamps();
         });
     }
