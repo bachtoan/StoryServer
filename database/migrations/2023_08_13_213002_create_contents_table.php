@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('id_sound')->nullable();
             $table->foreign('id_sound')->references('id')->on('sounds');
-            $table->string('sync_data')->nullable();
+            $table->string('sync_data',10000)->nullable();
             $table->timestamps();
         });
     }
