@@ -27,12 +27,12 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Story::factory(10)->create();
-        Sound::factory(10)->create();
-        Content::factory(10)->create();
-        Touchable::factory(10)->create();
-        Page::factory(10)->create();
-        PageContent::factory(10)->create();
-        PageTouchable::factory(10)->create();
+//        Sound::factory(10)->create();
+//        Content::factory(10)->create();
+//        Touchable::factory(10)->create();
+//        Page::factory(10)->create();
+//        PageContent::factory(10)->create();
+//        PageTouchable::factory(10)->create();
 
 
     }

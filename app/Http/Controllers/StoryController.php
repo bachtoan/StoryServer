@@ -9,7 +9,7 @@ use App\Repositories\Story\StoryRepositoryInterface;
 
 class StoryController extends Controller
 {
-    protected $storyRepository; 
+    protected $storyRepository;
 
     public function __construct(StoryRepositoryInterface $storyRepository)
     {
@@ -26,18 +26,21 @@ class StoryController extends Controller
     {
         $name = $request->input('name');
         $author = $request->input('author');
+        $genre = $request->input('genre');
         $illustration = $request->input('illustration');
         $page_quantity = $request->input('page_quantity');
 
-        $newStory = $storyRepository->addStory($name, $author, $illustration, $page_quantity);
-
-        return response()->json(['message' => 'Story added successfully']);
+        $newStory = $storyRepository->addStory($name, $author, $illustration, $page_quantity, $genre);
+        if(!$newStory){
+            return response()->json(['message' => 'Story added failed']);
+        }
+        return response()->json(['message' => 'Story added successfully'], 200);
     }
 
     public function updateStory(StoryRequest $request, StoryRepositoryInterface $storyRepository)
     {
         $id = $request->input('id');
-        
+
         if (!$id) {
              return response()->json(['error' => 'Missing id'], 400);
         }
@@ -58,7 +61,7 @@ class StoryController extends Controller
 
     public function deleteStory(Request $request, StoryRepositoryInterface $storyRepository){
         $id = $request->input('id');
-        
+
         if (!$id) {
              return response()->json(['error' => 'Missing id'], 400);
         }
@@ -67,7 +70,7 @@ class StoryController extends Controller
         if($deleteStory == null){
             return response()->json(['message' => 'Story not found'], 404);
         }
-    
+
         return response()->json(['message' => 'Story deleted successfully']);
     }
 

@@ -112,7 +112,8 @@ Route::post('/deletepagetouchable',[PageTouchableController::class, "deletePageT
 
 //=======================DetailStory======================================================
 
-Route::post('/detailstory',[DetailStoryController::class, "getDetailStory"]);
+Route::get('/detailstory/{id}', [DetailStoryController::class, 'getDetailStory']);
+
 
 
 

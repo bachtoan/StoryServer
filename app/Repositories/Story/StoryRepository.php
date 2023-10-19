@@ -12,11 +12,12 @@ class StoryRepository implements StoryRepositoryInterface
         return Story::all();
     }
 
-    public function addStory($name, $author, $illustration, $page_quantity)
+    public function addStory($name, $author, $illustration, $page_quantity, $genre)
     {
         $newStory = new Story();
         $newStory->name = $name;
         $newStory->author = $author;
+        $newStory->genre = $genre;
         $newStory->illustration = $illustration;
         $newStory->page_quantity = $page_quantity;
         $newStory->save();

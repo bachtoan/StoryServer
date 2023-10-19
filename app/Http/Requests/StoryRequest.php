@@ -28,8 +28,9 @@ class StoryRequest extends FormRequest
             'name'=>'required|max:100',
             'author'=>'required|max:100',
             'illustration'=>'required',
+            'genre' => 'required',
             'page_quantity'=>'required|integer|min:1',
-            
+
         ];
     }
 
@@ -47,6 +48,8 @@ class StoryRequest extends FormRequest
         return [
             'name.required' => 'Name is required',
             'author.required' => 'Author is required',
+            'genre.required' => 'Genre is required',
+
             'illustration.required' => 'Illustrator is required',
             'page_quantity.required' => 'page_quantity is number, required',
         ];
